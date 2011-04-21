@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module xmlns="urn:jboss:module:1.0" name="junit">
+    <dependencies>
+        <module name="system" export="false">
+            <exports>
+                <include-set>
+                    <path name="junit/framework"/>
+                    <path name="org/junit"/>
+                </include-set>
+            </exports>
+        </module>
+    </dependencies>
+</module>
