@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- TODO: fix that it actually does load the LogManager service -->
+<module xmlns="urn:jboss:module:1.0" name="org.jboss.logmanager">
+    <dependencies>
+        <module name="system" export="false">
+            <exports>
+                <include-set>
+                    <path name="org/jboss/logmanager"/>
+                    <path name="org/jboss/logmanager/formatters"/>
+                    <path name="org/jboss/logmanager/handlers"/>
+                </include-set>
+            </exports>
+        </module>
+    </dependencies>
+</module>

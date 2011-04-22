@@ -21,6 +21,7 @@
  */
 package org.jboss.modules.junit;
 
+import org.jboss.logmanager.Logger;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -31,6 +32,8 @@ import static junit.framework.Assert.assertEquals;
  */
 @RunWith(Modules.class)
 public class SimpleTestCase {
+    private static Logger log = Logger.getLogger("test");
+
     @Test
     public void test() {
         String classLoaderName = SimpleTestCase.class.getClassLoader().getClass().getName();
