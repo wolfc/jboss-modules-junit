@@ -51,7 +51,7 @@ public class Modules extends Runner {
             LogModuleInitializer.initialize(moduleLoader, ModuleIdentifier.SYSTEM);
             // TODO: how can I make modules export META-INF/services/java.util.logging.LogManager from SYSTEM?
             //LogModuleInitializer.initialize(moduleLoader, ModuleIdentifier.create("org.jboss.logmanager"));
-            ModuleIdentifier identifier = ModuleIdentifier.create(cls.getName());
+            ModuleIdentifier identifier = ModuleIdentifier.create(getModuleName(cls));
             module = moduleLoader.loadModule(identifier);
             Class<?> other = module.getClassLoader().loadClass(cls.getName());
             this.delegate = new JUnit4(other);
@@ -67,6 +67,13 @@ public class Modules extends Runner {
     @Override
     public Description getDescription() {
         return delegate.getDescription();
+    }
+
+    private static String getModuleName(Class<?> cls) {
+        final ModuleName moduleName = cls.getAnnotation(ModuleName.class);
+        if (moduleName == null)
+            return cls.getName();
+        return moduleName.value();
     }
 
     private static String getPathOf(Class<?> cls) {
